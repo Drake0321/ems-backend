@@ -14,6 +14,7 @@ namespace ems_backend.Services.Implementations
             _repo = repo;
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<EmployeeResponseDto>> GetAll()
         {
             var employees = await _repo.GetAll();
@@ -26,11 +27,13 @@ namespace ems_backend.Services.Implementations
             });
         }
 
+        /// <inheritdoc/>
         public async Task<Employee> GetById(int id)
         {
             return await _repo.GetById(id);
         }
 
+        /// <inheritdoc/>
         public async Task<Employee> Create(Employee employee)
         {
             var id = await _repo.Create(employee);
@@ -38,6 +41,7 @@ namespace ems_backend.Services.Implementations
             return employee;
         }
 
+        /// <inheritdoc/>
         public async Task<bool> Update(int id, Employee employee)
         {
             if (id != employee.Id)
@@ -46,6 +50,7 @@ namespace ems_backend.Services.Implementations
             return await _repo.Update(employee);
         }
 
+        /// <inheritdoc/>
         public async Task<bool> Delete(int id)
         {
             return await _repo.Delete(id);

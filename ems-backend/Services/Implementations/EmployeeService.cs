@@ -50,7 +50,6 @@ namespace ems_backend.Services.Implementations
             return await _repo.Update(employee);
         }
 
-
         /// <inheritdoc/>
         public async Task<bool> Delete(int id)
         {

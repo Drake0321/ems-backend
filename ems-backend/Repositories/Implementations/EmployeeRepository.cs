@@ -14,6 +14,7 @@ namespace ems_backend.Repositories.Implementations
             _context = context;
         }
 
+        /// <inheritdoc/>
         public async Task<IEnumerable<Employee>> GetAll()
         {
             var query = "SELECT * FROM Employees";
@@ -22,6 +23,7 @@ namespace ems_backend.Repositories.Implementations
             return await connection.QueryAsync<Employee>(query);
         }
 
+        /// <inheritdoc/>
         public async Task<Employee> GetById(int id)
         {
             var query = "SELECT * FROM Employees WHERE Id = @Id";
@@ -30,6 +32,7 @@ namespace ems_backend.Repositories.Implementations
             return await connection.QueryFirstOrDefaultAsync<Employee>(query, new { Id = id });
         }
 
+        /// <inheritdoc/>
         public async Task<int> Create(Employee employee)
         {
             var query = @"INSERT INTO Employees (FirstName, LastName, Email)
@@ -40,6 +43,7 @@ namespace ems_backend.Repositories.Implementations
             return await connection.ExecuteScalarAsync<int>(query, employee);
         }
 
+        /// <inheritdoc/>
         public async Task<bool> Update(Employee employee)
         {
             var query = @"UPDATE Employees
@@ -53,6 +57,7 @@ namespace ems_backend.Repositories.Implementations
             return rows > 0;
         }
 
+        /// <inheritdoc/>
         public async Task<bool> Delete(int id)
         {
             var query = "DELETE FROM Employees WHERE Id = @Id";

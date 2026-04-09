@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ems-backend</name>
+    </assembly>
+    <members>
+        <member name="T:ems_backend.Controllers.EmployeesController">
+            <summary>
+            API endpoints for managing employees
+            </summary>
+        </member>
+        <member name="M:ems_backend.Controllers.EmployeesController.#ctor(ems_backend.Services.Interfaces.IEmployeeService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ems_backend.Controllers.EmployeesController"/> class
+            </summary>
+            <param name="service">Employee service dependency</param>
+        </member>
+        <member name="M:ems_backend.Controllers.EmployeesController.GetAll">
+            <summary>
+            Retrieves all employees
+            </summary>
+            <returns>List of all employees</returns>
+            <response code="200">Returns the list of employees</response>
+            <response code="500">Internal server error</response>
+        </member>
+        <member name="M:ems_backend.Controllers.EmployeesController.GetById(System.Int32)">
+            <summary>
+            Retrieves an employee by ID
+            </summary>
+            <param name="id">Employee ID</param>
+            <returns>Employee details</returns>
+            <response code="200">Returns the employee</response>
+            <response code="404">Employee not found</response>
+            <response code="500">Internal server error</response>
+        </member>
+        <member name="M:ems_backend.Controllers.EmployeesController.Create(ems_backend.DTOs.EmployeeCreateDto)">
+             <summary>
+             Creates a new employee
+             </summary>
+             <param name="employee">Employee object to create</param>
+             <returns>The created employee</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /api/employees
+                 {
+                     "firstName": "Mayank",
+                     "lastName": "Srivastava",
+                     "email": "mayank@test.com"
+                 }
+            
+             </remarks>
+             <response code="201">Employee created successfully</response>
+             <response code="400">Invalid input data</response>
+             <response code="500">Internal server error</response>
+        </member>
+        <member name="M:ems_backend.Controllers.EmployeesController.Update(System.Int32,ems_backend.DTOs.EmployeeUpdateDto)">
+             <summary>
+             Updates an existing employee
+             </summary>
+             <param name="id">Employee ID</param>
+             <param name="employee">Updated employee object</param>
+             <returns>No content if update is successful</returns>
+             <remarks>
+             Sample request:
+            
+                 PUT /api/employees/1
+                 {
+                     "id": 1,
+                     "firstName": "Updated",
+                     "lastName": "Name",
+                     "email": "updated@test.com"
+                 }
+            
+             </remarks>
+             <response code="204">Employee updated successfully</response>
+             <response code="400">Invalid input or ID mismatch</response>
+             <response code="404">Employee not found</response>
+             <response code="500">Internal server error</response>
+        </member>
+        <member name="M:ems_backend.Controllers.EmployeesController.Delete(System.Int32)">
+            <summary>
+            Deletes an employee by ID
+            </summary>
+            <param name="id">Employee ID</param>
+            <returns>No content if deletion is successful</returns>
+            <response code="204">Employee deleted successfully</response>
+            <response code="404">Employee not found</response>
+            <response code="500">Internal server error</response>
+        </member>
+    </members>
+</doc>
